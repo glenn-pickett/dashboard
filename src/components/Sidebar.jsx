@@ -19,9 +19,9 @@ const Sidebar = () => {
     const normalLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray';
 
     return (
-        <div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
+        <div>
             {activeMenu ?
-                (<>
+                (<div className='ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
                     <div className='flex justify-between items-center'>
                         <Link to='/' onClick={handleCloseSidebar} className='items-center gap-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900'>
                             <SiShopware /><span>Dashboard</span>
@@ -51,34 +51,31 @@ const Sidebar = () => {
                             )
                         })}
                     </div>
-                </>)
+                </div>)
                 : (
-                    <>
-                        <div className='items-center'>
-                            <Link to='/' onClick={handleCloseSidebar} className='items-center mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900'>
-                                <SiShopware />
-                            </Link>
-                            <TooltipComponent content='Menu' position='BottomCenter'>
-                                <button type='button' onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'>
-                                    <MdOutlineCancel />
-                                </button>
-                            </TooltipComponent>
-                            {links.map((item) => {
-                                return (
-                                    <div key={item.title}>
-                                        {item.links.map((link) => (
-                                            <TooltipComponent content={link.name[0].toUpperCase()+link.name.substring(1)} position='BottomCenter'>
-                                                <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={(isActive) => isActive ? activeLinkClosed : normalLinkClosed}>
-                                                    {link.icon}
-                                                </NavLink>
-                                            </TooltipComponent>
-                                        ))}
-                                    </div>
-                                )
-                            })}
-                        </div>
-                    </>
-
+                    <div className='ml-2 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10'>
+                        <Link to='/' onClick={handleCloseSidebar} className='mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900'>
+                            <SiShopware />
+                        </Link>
+                        <TooltipComponent content='Menu' position='BottomCenter'>
+                            <button type='button' onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'>
+                                <MdOutlineCancel />
+                            </button>
+                        </TooltipComponent>
+                        {links.map((item) => {
+                            return (
+                                <div key={item.title} className='ml-1'>
+                                    {item.links.map((link) => (
+                                        <TooltipComponent content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter'>
+                                            <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={(isActive) => isActive ? activeLinkClosed : normalLinkClosed}>
+                                                {link.icon}
+                                            </NavLink>
+                                        </TooltipComponent>
+                                    ))}
+                                </div>
+                            )
+                        })}
+                    </div>
                 )}
         </div>
     )
