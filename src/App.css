@@ -13,6 +13,13 @@
   }
 }
 
+/*
+
+.e-kanban .e-kanban-header .e-header-cells.e-max-color {
+  background-color: lightblue;
+}
+*/
+
 .e-dlg-center-center, .e-quick-popup-wrapper.e-device{
   z-index: 1000000 !important;
 }
