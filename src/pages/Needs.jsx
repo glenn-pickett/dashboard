@@ -4,6 +4,7 @@ import { KanbanComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/
 import { useEffect, useState } from 'react';
 
 const Needs = () => {
+    /*
     const [state, setstate] = useState();
 
     let allWithClass = null;
@@ -73,7 +74,7 @@ const Needs = () => {
             if(i[key])
             //i[key].style['background-color'] = styles[key];
             i[key].class = 'red';
-            console.log('addColor', i[key], styles[key], key);
+            //console.log('addColor', i[key], styles[key], key);
         }
     }
 
