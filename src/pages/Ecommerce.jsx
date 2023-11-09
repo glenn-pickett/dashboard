@@ -2,8 +2,10 @@ import { BsDot } from "react-icons/bs";
 
 import { Stacked, Button, Spark, Header } from "../components";
 import { earningData, SparklineAreaData } from "../data/dummy";
+import { useStateContext } from "../contexts/ContextProvider";
 
 const Ecommerce = () => {
+    const { currentColor, currentMode } = useStateContext();
     return (
         <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
             <Header category="Dashboard" title="Ecommerce" />
@@ -17,7 +19,7 @@ const Ecommerce = () => {
                             </div>
                         </div>
                         <div className="mt-6">
-                            <Button color='white' bgColor='blue' text='Download' borderRadius='10px' size='md' />
+                            <Button color='white' bgColor={ currentColor } text='Download' borderRadius='10px' size='md' />
                         </div>
                     </div>
                     <div className="flex m-3 flex-wrap justify-center gap-1 items-center">
@@ -79,14 +81,14 @@ const Ecommerce = () => {
                                     </p>
                                 </div>
                                 <div>
-                                    <Spark currentColor='blue' id='line-spark' type='Line' height='80px' width='250px' data={SparklineAreaData} />
+                                    <Spark color={ currentColor } currentColor={ currentColor } id='line-spark' type='Line' height='80px' width='250px' data={SparklineAreaData} />
                                 </div>
                                 <div className="mt-10">
-                                    <Button color='white' bgColor='blue' text='Download Report' borderRadius='10px' />
+                                    <Button color='white' bgColor={ currentColor } text='Download Report' borderRadius='10px' size={'md'}/>
                                 </div>
                             </div>
                             <div>
-                                <Stacked />
+                                <Stacked color={ currentMode } fill='white' currentColor={ currentColor }/>
                             </div>
                         </div>
                     </div>

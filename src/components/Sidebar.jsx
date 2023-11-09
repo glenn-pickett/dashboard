@@ -7,13 +7,13 @@ import { links } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Sidebar = () => {
-    const { activeMenu, setActiveMenu, screenSize } = useStateContext();
+    const { activeMenu, setActiveMenu, screenSize, currentColor } = useStateContext();
 
     const handleCloseSidebar = () => {
         activeMenu && screenSize <= 900 ? setActiveMenu(false) : setActiveMenu(true)
     }
 
-    const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-gray-900 text-md m-2';
+    const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2';
     const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
     const activeLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-gray-900 text-md';
     const normalLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray';
@@ -40,7 +40,7 @@ const Sidebar = () => {
                                         {item.title}
                                     </p>
                                     {item.links.map((link) => (
-                                        <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={(isActive) => isActive ? activeLink : normalLink}>
+                                        <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={({isActive}) => (isActive ? activeLink : normalLink)} style={({isActive}) => ({backgroundColor: isActive ? currentColor : ''})}>
                                             {link.icon}
                                             <span className='capitalize'>
                                                 {link.name}
@@ -65,8 +65,8 @@ const Sidebar = () => {
                         {links.map((item) => {
                             return (
                                 <div key={item.title} className='ml-1'>
-                                    {item.links.map((link) => (
-                                        <TooltipComponent content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter'>
+                                    {item.links.map((link, index) => (
+                                        <TooltipComponent key={index} content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter'>
                                             <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={(isActive) => isActive ? activeLinkClosed : normalLinkClosed}>
                                                 {link.icon}
                                             </NavLink>
