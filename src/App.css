@@ -13,6 +13,33 @@
   }
 }
 
+.e-kanban .e-kanban-header .e-header-cells:first-child {
+  background: orange;
+}
+
+.e-kanban .e-kanban-table.e-content-table .e-content-row:not(.e-swimlane-row) td:first-child {
+  background: chocolate;
+}
+
+.e-kanban .e-kanban-header .e-header-cells:nth-child(2) {
+  background: yellow;
+}
+
+.e-kanban .e-kanban-header .e-header-cells:nth-child(3) {
+  background: salmon;
+}
+
+.e-kanban .e-kanban-table.e-content-table .e-content-row:not(.e-swimlane-row) td:nth-child(3) {
+  background: pink;
+}
+
+.e-kanban .e-kanban-header .e-header-cells:last-child {
+  background: pink;
+}
+
+.e-kanban .e-kanban-table.e-content-table .e-content-row:not(.e-swimlane-row) td:last-child {
+  background: orange;
+}
 /*
 
 .e-kanban .e-kanban-header .e-header-cells.e-max-color {
