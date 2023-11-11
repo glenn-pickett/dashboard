@@ -1,7 +1,6 @@
 import { kanbanData, kanbanGrid } from '../data/dummy';
 import { Header } from '../components';
 import { KanbanComponent, ColumnsDirective, ColumnDirective } from '@syncfusion/ej2-react-kanban';
-import { useEffect, useState } from 'react';
 
 const Needs = () => {
      const styles = {
@@ -30,7 +29,7 @@ const Needs = () => {
     }*/
 
     return (
-        <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
+        <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl dark:bg-secondary-dark-bg">
             <Header category="App" title="Needs" />
             <KanbanComponent id='Needs' dataSource={kanbanData} cardSettings={{ contentField: 'Summary', headerField: 'Id' }} keyField='Status' style={{ backgroundColor: 'light-gray'}}>
                 <ColumnsDirective>

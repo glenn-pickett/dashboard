@@ -15,8 +15,8 @@ const Sidebar = () => {
 
     const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2';
     const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2';
-    const activeLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-gray-900 text-md';
-    const normalLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray';
+    const activeLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-md pl-1 text-white';
+    const normalLinkClosed = 'flex items-center gap-5 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray pl-1';
 
     return (
         <div>
@@ -40,7 +40,7 @@ const Sidebar = () => {
                                         {item.title}
                                     </p>
                                     {item.links.map((link) => (
-                                        <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={({isActive}) => (isActive ? activeLink : normalLink)} style={({isActive}) => ({backgroundColor: isActive ? currentColor : ''})}>
+                                        <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={({ isActive }) => (isActive ? activeLink : normalLink)} fill="white" style={({ isActive }) => ({ backgroundColor: isActive ? currentColor : '' })}>
                                             {link.icon}
                                             <span className='capitalize'>
                                                 {link.name}
@@ -57,17 +57,12 @@ const Sidebar = () => {
                         <Link to='/' onClick={handleCloseSidebar} className='mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900'>
                             <SiShopware />
                         </Link>
-                        <TooltipComponent content='Menu' position='BottomCenter'>
-                            <button type='button' onClick={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden'>
-                                <MdOutlineCancel />
-                            </button>
-                        </TooltipComponent>
                         {links.map((item) => {
                             return (
-                                <div key={item.title} className='ml-1'>
+                                <div key={item.title}>
                                     {item.links.map((link, index) => (
-                                        <TooltipComponent key={index} content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter'>
-                                            <NavLink to={`/${link.name}`} key={link.name} onClick={handleCloseSidebar} className={(isActive) => isActive ? activeLinkClosed : normalLinkClosed}>
+                                        <TooltipComponent key={index} content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter' style={{ width: '1.75em' }}>
+                                            <NavLink to={`/${link.name}`} key={link.name} className={({isActive}) => (isActive  ? activeLinkClosed : normalLinkClosed)} style={({ isActive }) => ({ backgroundColor: isActive ? currentColor : '' })}>
                                                 {link.icon}
                                             </NavLink>
                                         </TooltipComponent>

@@ -7,7 +7,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 const Ecommerce = () => {
     const { currentColor, currentMode } = useStateContext();
     return (
-        <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
+        <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl dark:bg-secondary-dark-bg">
             <Header category="Dashboard" title="Ecommerce" />
             <div className="mt-12">
                 <div className="flex flex-wrap lg:flex-nowrap justify-center">
@@ -81,7 +81,7 @@ const Ecommerce = () => {
                                     </p>
                                 </div>
                                 <div>
-                                    <Spark color={ currentColor } currentColor={ currentColor } id='line-spark' type='Line' height='80px' width='250px' data={SparklineAreaData} />
+                                    <Spark currentColor={ currentColor } id='line-spark' type='Line' height='80px' width='250px' data={SparklineAreaData} />
                                 </div>
                                 <div className="mt-10">
                                     <Button color='white' bgColor={ currentColor } text='Download Report' borderRadius='10px' size={'md'}/>

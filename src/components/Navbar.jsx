@@ -19,7 +19,7 @@ const NavButton = ({ title, customFun, icon, color, dotColor}) => (
 )
 
 const Navbar = () => {
-    const { activeMenu, setActiveMenu, isClicked, setIsClicked, screenSize, setScreenSize, handleClick, currentColor } = useStateContext();
+    const { activeMenu, setActiveMenu, isClicked, setIsClicked, screenSize, setScreenSize, handleOpen, currentColor } = useStateContext();
 
     useEffect(() => {
       const handleResize = () => setScreenSize(window.innerWidth);
@@ -40,11 +40,11 @@ const Navbar = () => {
         <div className='flex justify-between p-2 md:mx-6 relative'>
             <NavButton title='Menu' customFun={()=> setActiveMenu((prevActiveMenu)=> !prevActiveMenu)} color={currentColor} icon={<AiOutlineMenu />}/>
             <div className="flex">
-                <NavButton title='Cart' customFun={()=> handleClick('cart')} color={currentColor} icon={<FiShoppingCart />}/>
-                <NavButton title='Chat' dotColor='#03C9D7' customFun={()=> handleClick('chat')} color={currentColor} icon={<BsChatLeft />}/>
-                <NavButton title='Notifications' dotColor='#03C9D7' customFun={()=> handleClick('notification')} color={currentColor} icon={<RiNotification3Line />}/>
+                <NavButton title='Cart' customFun={()=> handleOpen('cart')} color={currentColor} icon={<FiShoppingCart />}/>
+                <NavButton title='Chat' dotColor='#03C9D7' customFun={()=> handleOpen('chat')} color={currentColor} icon={<BsChatLeft />}/>
+                <NavButton title='Notifications' dotColor='#03C9D7' customFun={()=> handleOpen('notification')} color={currentColor} icon={<RiNotification3Line />}/>
                 <TooltipComponent content="Profile" position='BottomCenter'>
-                    <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg' onClick={()=> handleClick('userProfile')}>
+                    <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg' onClick={()=> handleOpen('userProfile')}>
                         <img src={avatar} alt={avatar} className="rounded-full w-8 h-8" />
                         <p>
                             <span className="text-gray-400 text-14">Hi, </span>{' '}
@@ -56,8 +56,8 @@ const Navbar = () => {
 
                 {isClicked.cart && <Cart />}
                 {isClicked.chat && <Chat />}
-                {isClicked.notifications && <Notification />}
-                {isClicked.userprofile && <UserProfile />}
+                {isClicked.notification && <Notification />}
+                {isClicked.userProfile && <UserProfile />}
             </div>
         </div>
     )
