@@ -564,7 +564,7 @@ export const cartData = [
   {
     image:
       product5,
-    name: 'butterscotch ice-cream',
+    name: 'Butterscotch Ice-Cream',
     category: 'Milk product',
     price: '$250',
   },

@@ -61,7 +61,7 @@ const Sidebar = () => {
                             return (
                                 <div key={item.title}>
                                     {item.links.map((link, index) => (
-                                        <TooltipComponent key={index} content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter' style={{ width: '1.75em' }}>
+                                        <TooltipComponent key={index} content={link.name[0].toUpperCase() + link.name.substring(1)} position='BottomCenter' style={{ width: '1.75em', marginTop: '3px', marginBottom: '3px' }}>
                                             <NavLink to={`/${link.name}`} key={link.name} className={({isActive}) => (isActive  ? activeLinkClosed : normalLinkClosed)} style={({ isActive }) => ({ backgroundColor: isActive ? currentColor : '' })}>
                                                 {link.icon}
                                             </NavLink>
