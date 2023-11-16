@@ -9,46 +9,46 @@ import avatar from '../data/avatar.jpg';
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../contexts/ContextProvider';
 
-const NavButton = ({ title, customFun, icon, color, dotColor}) => (
+const NavButton = ({ title, customFun, icon, color, dotColor }) => (
     <TooltipComponent content={title} position='BottomCenter'>
-        <button type='button' onClick={customFun} style={{color}} className='relative text-xl rounded-full p-3 hover:bg-light-gray'>
-            <span style={{background: dotColor}} className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2' />
+        <button type='button' onClick={customFun} style={{ color }} className='relative text-xl rounded-full p-3 hover:bg-light-gray'>
+            <span style={{ background: dotColor }} className='absolute inline-flex rounded-full h-2 w-2 right-2 top-2' />
             {icon}
         </button>
     </TooltipComponent>
 )
 
 const Navbar = () => {
-    const { activeMenu, setActiveMenu, isClicked, setIsClicked, screenSize, setScreenSize, handleOpen, currentColor } = useStateContext();
+    const { setActiveMenu, isClicked, screenSize, setScreenSize, handleOpen, currentColor } = useStateContext();
 
     useEffect(() => {
-      const handleResize = () => setScreenSize(window.innerWidth);
+        const handleResize = () => setScreenSize(window.innerWidth);
 
-      window.addEventListener('resize', handleResize);
+        window.addEventListener('resize', handleResize);
 
-      handleResize();
+        handleResize();
 
-      return () => window.removeEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
     }, [])
-    
+
     useEffect(() => {
-      screenSize <=900 ? setActiveMenu(false) : setActiveMenu(true);
+        screenSize <= 900 ? setActiveMenu(false) : setActiveMenu(true);
     }, [screenSize])
-    
+
 
     return (
         <div className='flex justify-between p-2 md:mx-6 relative'>
-            <NavButton title='Menu' customFun={()=> setActiveMenu((prevActiveMenu)=> !prevActiveMenu)} color={currentColor} icon={<AiOutlineMenu />}/>
+            <NavButton title='Menu' customFun={() => setActiveMenu((prevActiveMenu) => !prevActiveMenu)} color={currentColor} icon={<AiOutlineMenu />} />
             <div className="flex">
-                <NavButton title='Cart' customFun={()=> handleOpen('cart')} color={currentColor} icon={<FiShoppingCart />}/>
-                <NavButton title='Chat' dotColor='#03C9D7' customFun={()=> handleOpen('chat')} color={currentColor} icon={<BsChatLeft />}/>
-                <NavButton title='Notifications' dotColor='#03C9D7' customFun={()=> handleOpen('notification')} color={currentColor} icon={<RiNotification3Line />}/>
+                <NavButton title='Cart' customFun={() => handleOpen('cart')} color={currentColor} icon={<FiShoppingCart />} />
+                <NavButton title='Chat' dotColor='#03C9D7' customFun={() => handleOpen('chat')} color={currentColor} icon={<BsChatLeft />} />
+                <NavButton title='Notifications' dotColor='#03C9D7' customFun={() => handleOpen('notification')} color={currentColor} icon={<RiNotification3Line />} />
                 <TooltipComponent content="Profile" position='BottomCenter'>
-                    <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg' onClick={()=> handleOpen('userProfile')}>
+                    <div className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg' onClick={() => handleOpen('userProfile')}>
                         <img src={avatar} alt={avatar} className="rounded-full w-8 h-8" />
                         <p>
-                            <span className="text-gray-400 text-14">Hi, </span>{' '}
-                            <span className="text-gray-400 ml-1 font-bold text-14">Glenn</span>
+                            <span className="text-gray-400 text-14" style={{ color: currentColor }}>Hi, </span>{' '}
+                            <span className="text-gray-400 ml-1 font-bold text-14" style={{ color: currentColor }}>Michael</span>
                         </p>
                         <MdKeyboardArrowDown className='text-gray-400 text-14' />
                     </div>

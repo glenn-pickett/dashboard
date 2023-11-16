@@ -13,11 +13,11 @@ const ColorPicker = () => {
                 <div id="preview" />
                 <div className="flex justify-center items-center gap-20 flex-wrap">
                     <div id='container'>
-                        <p className='text-2xl font-semibold mt-2 mb-4'>Inline Pallete</p>
+                        <p className='text-2xl font-semibold mt-2 mb-4 dark:text-white'>Inline Pallete</p>
                         <ColorPickerComponent mode="Palette" modeSwitcher={false} inline showButtons={false} change={change}/>
                     </div>
                     <div>
-                        <p className='text-2xl font-semibold mt-2 mb-4'>Inline Picker</p>
+                        <p className='text-2xl font-semibold mt-2 mb-4 dark:text-white'>Inline Picker</p>
                         <ColorPickerComponent id='inline-picker' mode='Picker' modeSwitcher={false} inline showButtons={false} change={change} />
                     </div>
                 </div>
